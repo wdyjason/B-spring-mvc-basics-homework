@@ -1,6 +1,7 @@
 package com.thoughtworks.capacity.gtb.mvc.service;
 
 import com.thoughtworks.capacity.gtb.mvc.Exception.UserAlreadyExistedException;
+import com.thoughtworks.capacity.gtb.mvc.Exception.loginFailedException;
 import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import com.thoughtworks.capacity.gtb.mvc.repository.UserRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -75,5 +77,24 @@ class UserServiceTest {
         } );
 
         verify(userRepository, times(0)).save(testUser);
+    }
+
+    @Test
+    public void shouldLoginSuccessfully() throws loginFailedException {
+        String username = "testUser";
+        String password = "testPassword";
+
+        User returnUser = User.builder()
+                .id(1)
+                .username("testUser")
+                .password("testPassword")
+                .email("test@qq.com")
+                .build();
+
+        when(userRepository.findOneByUsername(username)).thenReturn(Optional.of(returnUser));
+
+        User result = userService.login(username, password);
+
+        assertEquals(result, returnUser);
     }
 }
