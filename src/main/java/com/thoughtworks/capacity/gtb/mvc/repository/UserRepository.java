@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 @Data
 public class UserRepository {
-    private List<User> userList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
 
     public User save(User newUser) {
         newUser.setId(userList.size() + 1);

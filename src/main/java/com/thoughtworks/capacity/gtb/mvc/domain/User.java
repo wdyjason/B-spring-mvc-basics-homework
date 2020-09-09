@@ -20,7 +20,7 @@ public class User {
 
     @NotNull
     @Size(min = 3, max = 10)
-    @Pattern(regexp = " /^[a-zA-Z0-9_]{3,10}$/")
+    @Pattern(regexp = "^[a-zA-Z0-9_]{3,10}$")
     private String username;
 
     @NotNull
