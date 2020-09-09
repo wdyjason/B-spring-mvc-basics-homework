@@ -20,4 +20,10 @@ public class GlobalExceptionHandler {
         CommonError commonError = new CommonError(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(commonError);
     }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity notFound(Exception ex) {
+        CommonError commonError = new CommonError(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(commonError);
+    }
 }

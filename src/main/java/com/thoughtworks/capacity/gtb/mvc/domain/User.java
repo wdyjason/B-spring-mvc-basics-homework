@@ -18,15 +18,15 @@ public class User {
 
     private Integer id;
 
-    @NotNull
-    @Size(min = 3, max = 10)
-    @Pattern(regexp = "^[a-zA-Z0-9_]{3,10}$")
+    @NotNull(message = "username can not be null")
+    @Size(min = 3, max = 10, message = "username length should between 3 and 10")
+    @Pattern(regexp = "^[a-zA-Z0-9_]{3,10}$", message ="username should include `a-z A-Z 0-9 _` only")
     private String username;
 
-    @NotNull
-    @Size(min = 5, max = 12)
+    @NotNull(message = "password can not be null")
+    @Size(min = 5, max = 12, message = "password length should between 5 and 12")
     private String password;
 
-    @Email
+    @Email(message = "email pattern is incorrect")
     private String email;
 }
