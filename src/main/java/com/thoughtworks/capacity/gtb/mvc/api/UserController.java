@@ -1,7 +1,7 @@
 package com.thoughtworks.capacity.gtb.mvc.api;
 
 import com.thoughtworks.capacity.gtb.mvc.Exception.UserAlreadyExistedException;
-import com.thoughtworks.capacity.gtb.mvc.Exception.loginFailedException;
+import com.thoughtworks.capacity.gtb.mvc.Exception.LoginFailedException;
 import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import com.thoughtworks.capacity.gtb.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public User login(@RequestParam String username, @RequestParam String password) throws loginFailedException {
+    public User login(@RequestParam String username, @RequestParam String password) throws Exception {
         return userService.login(username, password);
     }
 }

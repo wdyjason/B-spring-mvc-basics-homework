@@ -1,15 +1,13 @@
 package com.thoughtworks.capacity.gtb.mvc.service;
 
 import com.thoughtworks.capacity.gtb.mvc.Exception.UserAlreadyExistedException;
-import com.thoughtworks.capacity.gtb.mvc.Exception.loginFailedException;
+import com.thoughtworks.capacity.gtb.mvc.Exception.LoginFailedException;
 import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import com.thoughtworks.capacity.gtb.mvc.repository.UserRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
@@ -80,7 +78,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void shouldLoginSuccessfully() throws loginFailedException {
+    public void shouldLoginSuccessfully() throws Exception {
         String username = "testUser";
         String password = "testPassword";
 
