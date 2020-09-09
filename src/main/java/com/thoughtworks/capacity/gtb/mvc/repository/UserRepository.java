@@ -17,4 +17,8 @@ public class UserRepository {
         userList.add(newUser);
         return newUser;
     }
+
+    public List<User> findAll() {
+        return this.userList;
+    }
 }
